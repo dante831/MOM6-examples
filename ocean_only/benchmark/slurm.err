@@ -1,0 +1,6 @@
+                              20220310 233510.176: Memuse(MB) at Memory HiWaterMark=  1.530E+03  1.530E+03  0.000E+00  1.530E+03
+mv: cannot stat 'prog__*.nc': No such file or directory
+mv: cannot stat 'ave_prog__*.nc': No such file or directory
+mv: cannot stat 'cont__*.nc': No such file or directory
+mv: cannot stat 'energy__*.nc': No such file or directory
+mv: cannot stat 'forcing__*.nc': No such file or directory

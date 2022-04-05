@@ -1,0 +1,31 @@
+#!/bin/bash
+
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=6
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=16GB
+#SBATCH --time=1:00:00
+#SBATCH --job-name=MOM6
+#SBATCH --output=slurm.out
+#SBATCH --error=slurm.err
+#SBATCH --mail-type=END
+#SBATCH --mail-user=zl1574@nyu.edu
+
+## Set experiment name here
+EXP_NAME=double_gyre
+
+## Create an output directory /scratch/zl1574/mom6/double_gyre and copy experiment files into it
+rm -rf $SCRATCH/mom6_simulation/$EXP_NAME
+mkdir -p $SCRATCH/mom6_simulation/$EXP_NAME
+cd $SCRATCH/mom6_simulation/$EXP_NAME
+cp -r ~/mom6/MOM6-examples/ocean_only/$EXP_NAME/* .
+
+## Run the model with 2*30=60 tasks
+module purge
+source ~/mom6/MOM6-examples/build/intel/env
+mpiexec -n 6 ~/mom6/MOM6-examples/build/intel/ocean_only/repro/MOM6
+
+## Move output files to /scratch/zl1574/mom6_simulation/double_gyre/output
+mkdir -p output
+mv prog__*.nc ave_prog__*.nc cont__*.nc energy__*.nc forcing__*.nc output
+

@@ -1,0 +1,6 @@
+
+WARNING from PE     0: depth_list_setup: ./Depth_list.nc does not exist.  Creating a new file.
+
+                              20220311 012350.919: Memuse(MB) at Memory HiWaterMark=  1.629E+02  1.838E+02  7.602E+00  1.668E+02
+mv: cannot stat 'energy__*.nc': No such file or directory
+mv: cannot stat 'forcing__*.nc': No such file or directory
